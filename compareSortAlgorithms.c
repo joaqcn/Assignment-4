@@ -16,8 +16,8 @@ void merge(int pData[], int l, int m, int r)
 	// create temp arrays
 	int *L = (int *)malloc(sizeof(int) * n1);
 	int *R = (int *)malloc(sizeof(int) * n2);
-	// extra memory allocated
 	extraMemoryAllocated = sizeof(int) * (n1 + n2);
+	// extra memory allocated
 	// Copy data to temp arrays L[] and R[]
 	for (i = 0; i < n1; i++)
 		L[i] = pData[l + i];
@@ -58,8 +58,6 @@ void merge(int pData[], int l, int m, int r)
 		j++;
 		k++;
 	}
-	extraMemoryAllocated = sizeof(int) * (n1 + n2);
-
 }
 void mergeSort(int pData[], int l, int r)
 {
@@ -72,10 +70,10 @@ void mergeSort(int pData[], int l, int r)
 		// Sort first and second halves
 		mergeSort(pData, l, m);
 		mergeSort(pData, m + 1, r);
+
 		// Merge the sorted halves
 		merge(pData, l, m, r);
 	}
-
 }
 
 // implement insertion sort
