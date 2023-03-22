@@ -16,13 +16,16 @@ void merge(int pData[], int l, int m, int r)
 	// create temp arrays
 	int *L = (int *)malloc(sizeof(int) * n1);
 	int *R = (int *)malloc(sizeof(int) * n2);
-	extraMemoryAllocated = sizeof(int) * (n1 + n2);
-	// extra memory allocated
+
 	// Copy data to temp arrays L[] and R[]
 	for (i = 0; i < n1; i++)
+	{
 		L[i] = pData[l + i];
-	for (j = 0; j < n2; j++)
+	}
+	for (j = 0; j < n2; j++){
 		R[j] = pData[m + 1 + j];
+	}
+	extraMemoryAllocated = extraMemoryAllocated + sizeof(int) * (n1 + n2);
 
 	// Merge the temp arrays back into pData[l..r]
 	i = 0; // Initial index of first subarray
@@ -86,7 +89,6 @@ void insertionSort(int *pData, int n)
 
 		int j = i - 1;
 		int temp = pData[i];
-		extraMemoryAllocated = sizeof(temp) * n;
 		while (j >= 0 && pData[j] > temp)
 		{
 			pData[j + 1] = pData[j];
@@ -107,13 +109,11 @@ void bubbleSort(int *pData, int n)
 			if (pData[j] > pData[j + 1])
 			{
 				int temp = pData[j];
-				extraMemoryAllocated = sizeof(temp) * n;
 				pData[j] = pData[j + 1];
 				pData[j + 1] = temp;
 			}
 		}
 	}
-	extraMemoryAllocated = sizeof(int) * n;
 }
 
 // implement selection sort
@@ -135,7 +135,6 @@ void selectionSort(int *pData, int n)
 		pData[i] = pData[min];
 		pData[min] = temp;
 	}
-	extraMemoryAllocated = sizeof(int) * n;
 }
 
 // parses input file to an integer array
